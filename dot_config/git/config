@@ -1,0 +1,104 @@
+# ---------- Credentials ----------
+[user]
+	email = chilli@thechilli.dev
+	name = Chilli
+
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+
+# ---------- Core settings ----------
+[core]
+    autocrlf = input                   # Convert CRLF to LF on commit
+
+[init]
+    defaultBranch = main              # Set default branch name for new repos
+
+[help]
+    autocorrect = 10                  # Auto-correct mistyped commands after 1s
+
+[commit]
+    verbose = true                    # Show diff in commit message editor
+
+# ---------- Diff and merge ----------
+[diff]
+    algorithm = histogram             # Better diff algorithm
+    colorMoved = true                 # Highlight moved lines
+    compactionheuristic = true       # Improve diff readability
+    mnemonicprefix = true            # Use mnemonic branch names in diff output
+    renames = copies                 # Detect copies as well as renames
+    submodule = log                  # Show submodule commit logs in diffs
+
+[merge]
+    conflictStyle = zdiff3           # Show ancestor in merge conflicts
+
+# ---------- Pull, push, and rebase ----------
+[pull]
+    rebase = true                    # Use rebase instead of merge when pulling
+
+[push]
+    default = current                # Push current branch only
+    autoSetupRemote = true          # Set upstream when pushing a new branch
+    followTags = true               # Push tags along with branches
+
+[rebase]
+    autosquash = true               # Autosquash fixup!/squash! commits
+
+# ---------- Conflict resolution ----------
+[rerere]
+    enabled = true                  # Remember resolved conflicts
+    autoupdate = true              # Auto-update conflict resolution data
+
+# ---------- Grep and log ----------
+[grep]
+    lineNumber = true               # Show line numbers in grep
+    extendedRegexp = true          # Use extended regex syntax
+
+[log]
+    date = iso                      # Use ISO 8601 timestamps in logs
+
+# ---------- Data integrity ----------
+[transfer]
+    fsckObjects = true              # Check objects during transfer
+
+[fetch]
+    fsckObjects = true              # Check objects when fetching
+
+[receive]
+    fsckObjects = true              # Check objects when receiving
+
+# ---------- Submodules ----------
+[status]
+    submoduleSummary = true         # Show submodule summary in status
+
+[submodule]
+    recurse = true                  # Recurse into submodules
+
+# ---------- Sorting ----------
+[branch]
+    sort = -committerdate           # Sort branches by most recent commit
+
+[tag]
+    sort = taggerdate               # Sort tags by date
+
+# ---------- URL rewrites ----------
+[url "git@github.com:"]
+    insteadOf = gh:                 # Allow shorthand like gh:user/repo
+
+[url "git@gitlab.com:"]
+    insteadOf = gl:                 # Allow shorthand like gl:user/repo
+
+# ---------- Aliases ----------
+[alias]
+    ff = merge --ff-only            # Fast-forward-only merge
+    undo = reset --hard HEAD~1      # Undo last commit
+
+# ---------- Filters ----------
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f

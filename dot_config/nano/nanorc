@@ -1,0 +1,64 @@
+set autoindent
+
+set historylog
+
+# Scroll bar
+set indicator
+
+set linenumbers
+
+set locking
+
+set mouse
+
+set nohelp
+
+# Smarter Home key
+set smarthome
+
+# Use the end of the title bar for some state flags: I = auto-indenting,
+# M = mark, L = hard-wrapping long lines, R = recording, S = soft-wrapping.
+set stateflags
+
+# Use this tab size instead of the default; it must be greater than 0.
+set tabsize 4
+
+set unix
+
+set whitespace "»·"
+
+# Syntax definitions
+include "/usr/share/nano/*.nanorc"
+
+# Key bindings
+bind ^X cut main
+bind ^C copy main
+bind ^V paste all
+bind ^Q exit all
+bind ^S savefile main
+bind ^W writeout main
+bind ^O insert main
+set multibuffer
+bind ^H help all
+bind ^H exit help
+bind ^F whereis all
+bind ^G findnext all
+bind ^B wherewas all
+bind ^D findprevious all
+bind ^R replace main
+unbind ^U all
+unbind ^N main
+unbind ^Y all
+unbind M-J main
+unbind M-T main
+bind ^A mark main
+bind ^P location main
+bind ^T gotoline main
+bind ^T gotodir browser
+bind ^T cutrestoffile execute
+bind ^L linter execute
+bind ^E execute main
+bind ^K "{mark}{end}{zap}" main
+bind ^U "{mark}{home}{zap}" main
+bind ^Z undo main
+bind ^Y redo main
