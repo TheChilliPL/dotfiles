@@ -8,20 +8,16 @@ input {
     }
 
     touchpad {
-        // off
         tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
+        dwt
+        dwtp
+        drag true
+        drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
     }
 
     warp-mouse-to-focus
+    disable-power-key-handling
 }
 
 {{ if eq .chezmoi.hostname "chilli-pc" -}}
@@ -48,8 +44,8 @@ layout {
     }
 
     preset-window-heights {
-		proportion 0.5
-		proportion 1.0
+        proportion 0.5
+        proportion 1.0
     }
 
     default-column-width { proportion 0.5; }
@@ -66,6 +62,7 @@ layout {
     }
 }
 
+spawn-at-startup "swww-daemon"
 spawn-at-startup "waybar"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "bitwarden-desktop"
@@ -77,6 +74,7 @@ environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     HASS_SERVER "https://home.thechilli.dev"
     HASS_TOKEN "{{ (bitwarden "item" "HASS Token").login.password }}"
+    PLANNER_SCHEDULE_PATH "/home/chilli/Projects/uni-schedule/schedule.json"
 }
 
 prefer-no-csd
@@ -84,28 +82,28 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d--%H-%M-%S.png"
 
 window-rule {
-	match title="^$" app-id="^$"
+    match title="^$" app-id="^$"
 
-	open-floating true
-	open-focused false
-	default-floating-position x=32 y=16 relative-to="bottom-right"
-	
-	baba-is-float true
+    open-floating true
+    open-focused false
+    default-floating-position x=32 y=16 relative-to="bottom-right"
+    
+    baba-is-float true
 
-	opacity 0.5
+    opacity 0.5
 
-	focus-ring {
-		off
-	}
+    focus-ring {
+        off
+    }
 
-	shadow {
-		on
-	}
+    shadow {
+        on
+    }
 }
 
 window-rule {
     match app-id="^steam$" title=r#"^notificationtoasts_\d+_desktop$"#
-	match app-id="^thunderbird$" title="^$"
+    match app-id="^thunderbird$" title="^$"
 
     open-floating true
     open-focused false
@@ -115,78 +113,80 @@ window-rule {
 }
 
 window-rule {
-	match title="^File Operation Progress$" app-id="^thunar$"
-	match app-id=r#"^org\.kde\.dolphin"# title="^(Deleting|Moving|Copying) — Dolphin$"
+    match title="^File Operation Progress$" app-id="^thunar$"
+    match app-id=r#"^org\.kde\.dolphin"# title="^(Deleting|Moving|Copying) — Dolphin$"
 
-	open-floating true
-	open-focused false
-	default-floating-position x=32 y=16 relative-to="top-right"
+    open-floating true
+    open-focused false
+    default-floating-position x=32 y=16 relative-to="top-right"
 
-	shadow { on; }
+    shadow { on; }
 }
 
 window-rule {
-	match app-id=r#"^org\.kde\.dolphin"# title="^Warning — Dolphin$"
+    match app-id=r#"^org\.kde\.dolphin"# title="^Warning — Dolphin$"
 
-	open-floating true
+    open-floating true
 }
 
 window-rule {
-	match app-id="^steam_app_"
+    match app-id="^steam_app_"
 
-	open-fullscreen true
-	open-on-output "HDMI-A-1"
+    open-fullscreen true
+    {{ if eq .chezmoi.hostname "chilli-pc" -}}
+    open-on-output "HDMI-A-1"
+    {{- end }}
 }
 
 window-rule {
-	match app-id="^jetbrains-toolbox$" title="^Toolbox$"
+    match app-id="^jetbrains-toolbox$" title="^Toolbox$"
 
-	default-floating-position x=10 y=10 relative-to="top-right"
+    default-floating-position x=10 y=10 relative-to="top-right"
 
-	shadow {
-		on
-	}
+    shadow {
+        on
+    }
 }
 
 window-rule {
-	match app-id="^vivaldi-stable$" title="- Vivaldi$"
+    match app-id="^vivaldi-stable$" title="- Vivaldi$"
 
-	open-maximized true
+    open-maximized true
 }
 
 window-rule {
-	match app-id="^vivaldi-stable$" title="^Save File$" at-startup=true
+    match app-id="^vivaldi-stable$" title="^Save File$" at-startup=true
 
-	open-floating true
-	default-window-height { proportion 0.5; }
+    open-floating true
+    default-window-height { proportion 0.5; }
 }
 
 window-rule {
-	match app-id="^Qsynth$"
-	match app-id="^VirtualBox$" title="^VirtualBox - Preferences$"
+    match app-id="^Qsynth$"
+    match app-id="^VirtualBox$" title="^VirtualBox - Preferences$"
 
-	open-floating true
+    open-floating true
 }
 
 window-rule {
-	match app-id="^flameshot$" title="^flameshot$"
+    match app-id="^flameshot$" title="^flameshot$"
 
-	open-floating true
+    open-floating true
 
-	default-floating-position x=0 y=0 relative-to="bottom-left"
+    default-floating-position x=0 y=0 relative-to="bottom-left"
 }
 
 window-rule {
-	match app-id="^naps2$"
+    match app-id="^naps2$"
 
-	open-floating true
+    open-floating true
 }
 
 window-rule {
-	match app-id="^naps2$" title="^NAPS2 - "
+    match app-id="^naps2$" title="^NAPS2 - "
 
-	open-floating false
-	open-maximized true
+    open-floating false
+    open-maximized true
 }
 
 binds {
@@ -194,7 +194,7 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-	Super+L { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
+    Super+L { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005-"; }
