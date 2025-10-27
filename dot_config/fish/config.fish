@@ -4,3 +4,4 @@ end
 
 # Local binaries
 fish_add_path "/home/chilli/.local/bin"
+fish_add_path "/home/chilli/.local/share/mise/shims"

@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 if not type -q fisher
-    echo -e "\e[1;30;43m WARNING \e[0;33m Fisher not found, skipping plugin installation.\e[0m"
+    echo -e "\e[1;30;43m WARNING \e[0;33m Fisher not found, skipping plugin installation.\e[0m" >&2
     exit 0
 end
 
