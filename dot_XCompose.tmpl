@@ -1,0 +1,10 @@
+include "%L"
+
+{{ $dir := joinPath .chezmoi.sourceDir "dot_XCompose.d" -}}
+{{ $home := .chezmoi.homeDir -}}
+# Imported automatically from .XCompose.d:
+# {{ $dir }}
+{{ $files := (output "ls" $dir | trim) -}}
+{{ range $file := splitList "\n" $files -}}
+include "{{ joinPath $home ".XCompose.d" $file }}"
+{{ end -}}
