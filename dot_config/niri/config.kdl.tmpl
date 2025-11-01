@@ -201,7 +201,7 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+L { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
+    Super+L hotkey-overlay-title="Lock screen" { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005-"; }
