@@ -1,0 +1,26 @@
+[ui]
+username = Chilli <chilli@thechilli.dev>
+verbose = True
+
+[extensions]
+githelp =
+histedit =
+largefiles =
+share =
+# Experimental
+amend =
+automv =
+beautifygraph =
+
+[alias]
+latest = log --limit 5
+
+[commands]
+resolve.confirm = True
+
+[diff]
+git = True
+nobinary = True
+
+[progress]
+delay = 1
