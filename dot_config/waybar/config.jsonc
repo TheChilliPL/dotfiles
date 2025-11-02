@@ -91,10 +91,12 @@
   },
   "cpu": {
     "format": "{usage}% ",
-    "tooltip": false
+    "format-alt": "{avg_frequency} GHz "
   },
   "memory": {
-    "format": "{}% "
+    "format": "{}% ",
+    "format-alt": "{used}/{total} GB ",
+    "tooltip-format": "Memory: {used}/{total} GB ({percentage}%)\nSwap: {swapUsed}/{swapTotal} GB ({swapPercentage}%)"
   },
   "temperature": {
     "critical-threshold": 80,
@@ -169,13 +171,13 @@
     "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
   },
   "custom/power": {
-    "format": "⏻ ",
+    "format": " ⏻ ",
     "tooltip": false,
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml",
     "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
+      "shutdown": "systemctl poweroff",
+      "reboot": "systemctl reboot",
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate"
     }
