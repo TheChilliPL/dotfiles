@@ -102,3 +102,8 @@
     process = git-lfs filter-process
     required = true
     clean = git-lfs clean -- %f
+
+# ---------- Git Remind ----------
+# https://github.com/suin/git-remind
+[remind]
+	paths = /home/chilli/Projects/*
