@@ -106,4 +106,4 @@
 # ---------- Git Remind ----------
 # https://github.com/suin/git-remind
 [remind]
-	paths = /home/chilli/Projects/*
+	paths = /home/chilli/Projects/*,/home/chilli/.local/share/chezsys,/home/chilli/.local/share/chezmoi
