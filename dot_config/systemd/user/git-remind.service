@@ -1,0 +1,6 @@
+[Unit]
+Description=Shows notification that reminds to commit/push Git repos
+
+[Service]
+Type=oneshot
+ExecStart=/home/chilli/.local/bin/git-remind status-notification

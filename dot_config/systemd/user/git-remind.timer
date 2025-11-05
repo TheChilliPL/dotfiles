@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for git-remind.service
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=10min
+RandomizedDelaySec=2min
+
+[Install]
+WantedBy=timers.target
