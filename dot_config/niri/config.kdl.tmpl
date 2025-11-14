@@ -196,6 +196,12 @@ window-rule {
     open-maximized true
 }
 
+window-rule {
+	match app-id="^steam$" title="^Steam Big Picture Mode$"
+
+	open-fullscreen true
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
