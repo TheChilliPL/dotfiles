@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=3D Printer Camera
+Comment=Live view from 3d printer, powered by mpv
+Exec=mpv --no-terminal https://3dcam.thechilli.dev/video
+Icon=video-camera
+Terminal=false
+Categories=Video;Utility;
+StartupNotify=false
