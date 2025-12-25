@@ -51,7 +51,7 @@ output "DP-1" {
 {{- end }}
 
 layout {
-    gaps 1
+    gaps 8
 
     center-focused-column "never"
 
@@ -68,15 +68,20 @@ layout {
 
     default-column-width { proportion 0.5; }
 
-    focus-ring {
-        width 1
+    border {
+        width 4
         active-color "#7fc8ff"
         inactive-color "#505050"
+        urgent-color "#9b0000"
     }
+
+    focus-ring { off; }
 
     struts {
         left 8
         right 8
+        top 2
+        bottom 2
     }
 }
 
@@ -108,6 +113,12 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d--%H-%M-%S.png"
 
 window-rule {
+	// All windows
+
+	geometry-corner-radius 0.1 // Make *border* rounded
+}
+
+window-rule {
     match title="^$" app-id="^$"
 
     open-floating true
@@ -118,9 +129,8 @@ window-rule {
 
     opacity 0.5
 
-    focus-ring {
-        off
-    }
+    focus-ring { off; }
+    border { off; }
 
     shadow {
         on
@@ -177,7 +187,7 @@ window-rule {
 window-rule {
     match app-id="^vivaldi-stable$" title="- Vivaldi$"
 
-    open-maximized true
+    open-maximized-to-edges true
 }
 
 window-rule {
@@ -212,7 +222,7 @@ window-rule {
     match app-id="^naps2$" title="^NAPS2 - "
 
     open-floating false
-    open-maximized true
+    open-maximized-to-edges true
 }
 
 window-rule {
@@ -335,7 +345,8 @@ binds {
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
-    Mod+F { maximize-column; }
+    Mod+F { maximize-window-to-edges; }
+    Mod+Alt+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
     Mod+Ctrl+F { expand-column-to-available-width; }
