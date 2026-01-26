@@ -1,32 +1,38 @@
+{{- $chassisType := "desktop" }}
+{{- if eq .chezmoi.os "darwin" }}
+{{-   if contains "MacBook" (output "system_profiler" "SPHardwareDataType") }}
+{{-     $chassisType = "laptop" }}
+{{-   else }}
+{{-     $chassisType = "desktop" }}
+{{-   end }}
+{{- else if eq .chezmoi.os "linux" }}
+{{-   $chassisType = (output "hostnamectl" "--json=short" | mustFromJson).Chassis }}
+{{- else if eq .chezmoi.os "windows" }}
+{{-   $chassisType = (output "powershell.exe" "-NoProfile" "-NonInteractive" "-Command" "if ((Get-CimInstance -Class Win32_Battery | Measure-Object).Count -gt 0) { Write-Output 'laptop' } else { Write-Output 'desktop' }") | trim }}
+{{- end -}}
 // -*- mode: jsonc -*-
 {
   "height": 30,
   "spacing": 4,
-  "modules-left": [
-    "niri/workspaces",
-    "cffi/niri-taskbar",
-    "sway/mode",
-    "sway/scratchpad",
-    "custom/media"
-  ],
-  "modules-center": ["niri/window"],
+  "modules-left": ["niri/workspaces", "cffi/niri-taskbar", "niri/window"],
+  "modules-center": [],
   "modules-right": [
     "mpd",
+    {{ if eq $chassisType "laptop" -}}
     "idle_inhibitor",
+    "power-profiles-daemon",
+    {{- end }}
     "pulseaudio",
     "network",
-    "power-profiles-daemon",
     "cpu",
     "memory",
     "temperature",
     "backlight",
     "keyboard-state",
-    "sway/language",
     "battery",
-    "battery#bat2",
     "clock",
     "tray",
-    "custom/power"
+    "custom/power",
   ],
   "keyboard-state": {
     "numlock": true,
@@ -34,18 +40,8 @@
     "format": "{name} {icon}",
     "format-icons": {
       "locked": "",
-      "unlocked": ""
-    }
-  },
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
-  },
-  "sway/scratchpad": {
-    "format": "{icon} {count}",
-    "show-empty": false,
-    "format-icons": ["", ""],
-    "tooltip": true,
-    "tooltip-format": "{app}: {title}"
+      "unlocked": "",
+    },
   },
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -54,73 +50,70 @@
     "unknown-tag": "N/A",
     "interval": 5,
     "consume-icons": {
-      "on": " "
+      "on": " ",
     },
     "random-icons": {
       "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " "
+      "on": " ",
     },
     "repeat-icons": {
-      "on": " "
+      "on": " ",
     },
     "single-icons": {
-      "on": "1 "
+      "on": "1 ",
     },
     "state-icons": {
       "paused": "",
-      "playing": ""
+      "playing": "",
     },
     "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)"
+    "tooltip-format-disconnected": "MPD (disconnected)",
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "",
-      "deactivated": ""
-    }
+      "deactivated": "",
+    },
   },
   "tray": {
-    "spacing": 10
+    "spacing": 10,
   },
   "clock": {
     "interval": 1,
     "format": "<small>{0:%m-%d (%a)\n%H:%M:%S}</small>",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click": "notion-calendar-electron"
+    "on-click": "notion-calendar-electron",
   },
   "cpu": {
     "format": "{usage}% ",
-    "format-alt": "{avg_frequency} GHz "
+    "format-alt": "{avg_frequency} GHz ",
   },
   "memory": {
     "format": "{}% ",
     "format-alt": "{used}/{total} GB ",
-    "tooltip-format": "Memory: {used}/{total} GB ({percentage}%)\nSwap: {swapUsed}/{swapTotal} GB ({swapPercentage}%)"
+    "tooltip-format": "Memory: {used}/{total} GB ({percentage}%)\nSwap: {swapUsed}/{swapTotal} GB ({swapPercentage}%)",
   },
   "temperature": {
     "critical-threshold": 80,
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": ["", "", ""],
   },
   "backlight": {
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
   },
   "battery": {
     "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{capacity}% {icon}",
     "format-full": "{capacity}% {icon}",
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""]
-  },
-  "battery#bat2": {
-    "bat": "BAT2"
+    "format-icons": ["", "", "", "", ""],
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -130,8 +123,8 @@
       "default": "",
       "performance": "",
       "balanced": "",
-      "power-saver": ""
-    }
+      "power-saver": "",
+    },
   },
   "network": {
     "format-wifi": "{essid} ({signalStrength}%) ",
@@ -139,7 +132,7 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
@@ -155,20 +148,9 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", ""],
     },
-    "on-click": "pavucontrol"
-  },
-  "custom/media": {
-    "format": "{icon} {text}",
-    "return-type": "json",
-    "max-length": 40,
-    "format-icons": {
-      "spotify": "",
-      "default": "🎜"
-    },
-    "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
+    "on-click": "pavucontrol",
   },
   "custom/power": {
     "format": " ⏻ ",
@@ -179,11 +161,11 @@
       "shutdown": "systemctl poweroff",
       "reboot": "systemctl reboot",
       "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate"
-    }
+      "hibernate": "systemctl hibernate",
+    },
   },
   "cffi/niri-taskbar": {
     "module_path": "/usr/lib/waybar/libniri_taskbar.so",
-    "on-click": "activate"
-  }
+    "on-click": "activate",
+  },
 }
