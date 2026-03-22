@@ -18,6 +18,9 @@ abbr -a gc -- "git commit"
 abbr -a gp -- "git push"
 abbr -a gl -- "git log"
 abbr -a gd -- "git diff"
+abbr -a gac -- "git autocommit"
+abbr -a gcm --set-cursor -- "git commit -m \"%\""
+abbr -a gca --set-cursor -- "git commit --amend -m \"%\""
 
 # Show IP
 abbr -a ips -- "ip -c -br address show"
