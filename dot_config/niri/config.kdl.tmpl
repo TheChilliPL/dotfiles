@@ -238,6 +238,14 @@ window-rule {
 	open-floating true
 	
 	border { off; }
+	shadow { on; }
+}
+
+window-rule {
+	match app-id="^jetbrains-" title="^Welcome to "
+	match app-id="^jetbrains-" title="^$"
+
+	open-maximized-to-edges true
 }
 
 binds {
