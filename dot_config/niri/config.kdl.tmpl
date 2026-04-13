@@ -231,6 +231,15 @@ window-rule {
 	open-fullscreen true
 }
 
+window-rule {
+	match title="^splash$"
+
+	open-focused false
+	open-floating true
+	
+	border { off; }
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
