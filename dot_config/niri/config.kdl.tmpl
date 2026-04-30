@@ -27,6 +27,7 @@ input {
         drag true
         drag-lock
         natural-scroll
+        disabled-on-external-mouse
     }
     {{- else -}}
     touchpad {
@@ -111,6 +112,10 @@ environment {
 prefer-no-csd
 
 screenshot-path "~/Pictures/Screenshots/%Y-%m-%d--%H-%M-%S.png"
+
+clipboard {
+	disable-primary
+}
 
 window-rule {
 	// All windows
