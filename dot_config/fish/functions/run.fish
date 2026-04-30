@@ -5,5 +5,5 @@ function run --description "Run command detached from terminal, silent, and diso
     end
 
     nohup $argv >/dev/null 2>&1 </dev/null & disown
-    echo "Running $1..."
+    echo "Running $argv[1]..."
 end
