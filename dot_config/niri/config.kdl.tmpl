@@ -253,11 +253,19 @@ window-rule {
 	open-maximized-to-edges true
 }
 
+window-rule {
+	match app-id="^foot$" title="^otter-launcher$"
+
+	open-floating true
+	default-column-width { fixed 500; }
+	default-window-height { fixed 500; }
+}
+
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+D hotkey-overlay-title="Run Otter Launcher" { spawn "foot" "-T" "otter-launcher" "-e" "sh" "-c" "otter-launcher && sleep 0.2"; }
     Super+L hotkey-overlay-title="Lock screen" { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005+"; }
