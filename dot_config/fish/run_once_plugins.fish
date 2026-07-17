@@ -7,4 +7,15 @@ end
 
 fisher install IlanCosman/tide@v6
 
-tide configure --auto --style=Rainbow --prompt_colors='True color' --show_time='24-hour format' --rainbow_prompt_separators=Vertical --powerline_prompt_heads=Sharp --powerline_prompt_tails=Flat --powerline_prompt_style='Two lines, character' --prompt_connection=Solid --powerline_right_prompt_frame=No --prompt_connection_andor_frame_color=Lightest --prompt_spacing=Sparse --icons='Few icons' --transient=No
+tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time='24-hour format' --lean_prompt_height='Two lines' --prompt_connection=Dotted --prompt_spacing=Sparse --icons='Few icons' --transient=Yes
+
+# Setting prompt character
+# vi_icon_default necessary due to a bug: https://github.com/IlanCosman/tide/issues/622
+if fish_is_root_user
+	set -Ux tide_character_icon '#'
+	set -Ux tide_character_vi_icon_default '#'
+else
+	set -Ux tide_character_icon '$'
+	set -Ux tide_character_vi_icon_default '$'
+end
+set -Ux tide_context_always_display true
