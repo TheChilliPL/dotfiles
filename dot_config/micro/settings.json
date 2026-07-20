@@ -1,0 +1,9 @@
+{
+	"colorcolumn": 80,
+	"diffgutter": true,
+	"fileformat": "unix",
+	"matchbracestyle": "highlight",
+	"mkparents": true,
+	"scrollbar": true,
+	"showchars": "tab=   →,space=·"
+}
