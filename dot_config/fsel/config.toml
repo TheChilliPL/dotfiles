@@ -1,2 +1,5 @@
+pin_icon = "⭐"
+
 [app_launcher]
+filter_actions = true
 auto_hide_duplicates = true
