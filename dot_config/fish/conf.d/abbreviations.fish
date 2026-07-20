@@ -24,3 +24,6 @@ abbr -a gca --set-cursor -- "git commit --amend -m \"%\""
 
 # Show IP
 abbr -a ips -- "ip -c -br address show"
+
+# Edit file
+abbr -a e -- "$EDITOR"

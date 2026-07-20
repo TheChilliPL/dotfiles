@@ -6,3 +6,6 @@ end
 fish_add_path "/home/chilli/.local/bin"
 fish_add_path "/home/chilli/.local/share/mise/shims"
 fish_add_path "/home/chilli/.cargo/bin"
+
+set -gx EDITOR micro
+set -gx VISUAL micro
