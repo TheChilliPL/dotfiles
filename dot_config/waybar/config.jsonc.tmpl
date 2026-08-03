@@ -12,6 +12,10 @@
 {{- end -}}
 // -*- mode: jsonc -*-
 {
+  "layer": "top",
+  {{ if eq $chassisType "laptop" -}}
+  "output": "eDP-1",
+  {{ end -}}
   "height": 30,
   "spacing": 4,
   "modules-left": ["niri/workspaces", "cffi/niri-taskbar", "niri/window"],
