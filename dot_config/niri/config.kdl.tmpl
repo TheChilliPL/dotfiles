@@ -203,6 +203,16 @@ window-rule {
 }
 
 window-rule {
+	match app-id="^$" title=" is sharing (a window|your screen)\\.$"
+
+	opacity 0.5
+
+	default-floating-position x=-50 y=0 relative-to="bottom-right"
+
+	border { off; }
+}
+
+window-rule {
     match app-id="^Qsynth$"
     match app-id="^VirtualBox$" title="^VirtualBox - Preferences$"
 
