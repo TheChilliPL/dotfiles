@@ -421,11 +421,11 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    Mod+W { toggle-column-tabbed-display; }
+    Mod+W hotkey-overlay-title="Toggle tabbed" { toggle-column-tabbed-display; }
 
-    Ctrl+Print { screenshot; }
-    Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Ctrl+Print hotkey-overlay-title="Screenshot region" { screenshot; }
+    Print hotkey-overlay-title="Screenshot monitor" { screenshot-screen; }
+    Alt+Print hotkey-overlay-title="Screenshot window" { screenshot-window; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
@@ -433,15 +433,17 @@ binds {
     Ctrl+Alt+Delete { quit; }
 
 	Mod+P hotkey-overlay-title="Mirror current monitor" { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Shift+P hotkey-overlay-title="Power off monitors" { power-off-monitors; }
 
-    Super+Period { spawn "wofi-emoji"; }
+    Super+Period hotkey-overlay-title="Show emoji picker" { spawn "wofi-emoji"; }
 
     Mod+Shift+0 hotkey-overlay-title="Clear cast target" { clear-dynamic-cast-target; }
     Mod+Shift+1 hotkey-overlay-title="Cast current window" { set-dynamic-cast-window; }
     Mod+Shift+2 hotkey-overlay-title="Cast current output" { set-dynamic-cast-monitor; }
-    Mod+Shift+5 { spawn "~/Projects/autohotkey/HitmanQuickSave.SH" "save"; }
-    Mod+Shift+9 { spawn "~/Projects/autohotkey/HitmanQuickSave.SH" "load"; }
+    Mod+Shift+5 hotkey-overlay-title="Save HITMAN" { spawn "~/Projects/autohotkey/HitmanQuickSave.SH" "save"; }
+    Mod+Shift+9 hotkey-overlay-title="Load HITMAN" { spawn "~/Projects/autohotkey/HitmanQuickSave.SH" "load"; }
 
-    Mod+X { spawn "crosshairctl" "toggle"; }
+    Mod+X hotkey-overlay-title="Toggle crosshair" { spawn "crosshairctl" "toggle"; }
+
+    Mod+Shift+C hotkey-overlay-title="Pick and copy color" { spawn-sh "niri msg pick-color | grep -oE '#[0-9A-Fa-f]{6}' | wl-copy -n"; }
 }
