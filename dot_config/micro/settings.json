@@ -5,5 +5,7 @@
 	"matchbracestyle": "highlight",
 	"mkparents": true,
 	"scrollbar": true,
-	"showchars": "tab=   →,space=·"
+	"showchars": "tab=   →,space=·",
+	"tabstospaces": true,
+	"tabsize": 4
 }
