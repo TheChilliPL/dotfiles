@@ -2,3 +2,4 @@ theme = 12-bit Rainbow
 background-opacity = 0.8
 
 keybind = performable:ctrl+c=copy_to_clipboard
+keybind = performable:ctrl+shift+c=copy_to_clipboard:vt
