@@ -286,7 +286,7 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run Otter Launcher" { spawn "foot" "-T" "tui-launcher" "otter-launcher"; }
-    Mod+Space hotkey-overlay-title="Launch Application" { spawn "foot" "-T" "tui-launcher" "fsel"; }
+    Mod+Space hotkey-overlay-title="Launch Application" { spawn "foot" "-T" "tui-launcher" "fsel" "-vvdr"; }
     Mod+L hotkey-overlay-title="Lock screen" { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005+"; }
