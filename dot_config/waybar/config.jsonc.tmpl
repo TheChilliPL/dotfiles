@@ -18,7 +18,11 @@
   {{ end -}}
   "height": 30,
   "spacing": 4,
-  "modules-left": ["niri/workspaces", "cffi/niri-taskbar", "niri/window"],
+  "modules-left": [
+    "niri/workspaces",
+    "cffi/niri-taskbar",
+    "niri/window",
+  ],
   "modules-center": [],
   "modules-right": [
     "mpd",
@@ -27,6 +31,7 @@
     "power-profiles-daemon",
     {{- end }}
     "pulseaudio",
+    "pulseaudio#mic",
     "network",
     "cpu",
     "memory",
@@ -139,12 +144,10 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
   },
   "pulseaudio": {
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-bluetooth-muted": " {icon}",
+    "format-muted": "",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -155,6 +158,18 @@
       "default": ["", "", ""],
     },
     "on-click": "pavucontrol",
+    "max-volume": 150,
+    // "target": "sink",
+  },
+  "pulseaudio#mic": {
+    "format": "{format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "on-click": "pavucontrol",
+    "max-volume": 150,
+    // "target": "source", // Somehow not supported despite being in the waybar repo?
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.01+ -l 1.5",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 0.01-",
   },
   "custom/power": {
     "format": " ⏻ ",
