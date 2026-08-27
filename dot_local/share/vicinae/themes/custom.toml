@@ -1,0 +1,14 @@
+[meta]
+version = 1
+name = "Custom Chilli's Theme"
+description = "Chilli's dark theme"
+variant = "dark"
+inherits = "vicinae-dark"
+
+[colors.core]
+accent = "#7fc8ff"
+border = "colors.core.accent"
+
+[colors.list.item.selection]
+background = "colors.core.accent"
+foreground = "#000000"
