@@ -104,7 +104,7 @@ environment {
     DISPLAY ":0"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
     HASS_SERVER "https://home.thechilli.dev"
-    HASS_TOKEN "{{ (bitwarden "item" "HASS Token").login.password }}"
+    HASS_TOKEN "{{ (rbw "HASS Token").data.password }}"
     PLANNER_SCHEDULE_PATH "/home/chilli/Projects/uni-schedule/schedule.json"
     // Consistent XDG file picker
     GTK_USE_PORTAL "1"
