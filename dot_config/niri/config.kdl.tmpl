@@ -99,6 +99,7 @@ spawn-at-startup "bitwarden-desktop"
 spawn-at-startup "fuzzel-polkit-agent"
 spawn-at-startup "fcitx5"
 spawn-at-startup "protonmail-bridge"
+spawn-at-startup "swaync"
 
 environment {
     DISPLAY ":0"
@@ -298,6 +299,8 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "ghostty"; }
     Mod+Space hotkey-overlay-title="Open Vicinae" { spawn "vicinae" "toggle"; }
     Mod+L hotkey-overlay-title="Lock screen" { spawn "bash" "-c" "swaylock -S --effect-blur 30x5 --effect-vignette 1.0:1.0 --clock --datestr=\"%F\""; }
+
+    Mod+N hotkey-overlay-title="Notification center" { spawn "swaync-client" "-t"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005-"; }
