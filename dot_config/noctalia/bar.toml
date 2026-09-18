@@ -70,8 +70,8 @@ device = "input"
 # hide_when_inactive = true
 
 [widget.volume-mic.actions]
-scroll_up = "volume-up 1%"
-scroll_down = "volume-down 1%"
+scroll_up = "mic-volume-up 1%"
+scroll_down = "mic-volume-down 1%"
 
 [widget.clock]
 format = "%H:%M:%S"
