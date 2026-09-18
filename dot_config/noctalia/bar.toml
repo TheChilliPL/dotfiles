@@ -6,6 +6,8 @@ position = "top"
 panel_overlap = 10
 radius = 10
 start = [
+    "clock",
+    "neuro/upbeat:upbeat",
     "taskbar",
     "privacy",
     "weather",
@@ -13,17 +15,17 @@ start = [
 center = ["active_window"]
 end = [
     "media",
+    "andrewdems/printers:printer",
     "lock_keys",
     "tray",
     "keyboard_layout",
     "network",
     "bluetooth",
-    "sysmon",
+    "dotnetrob/cat:cat",
     "brightness",
     "volume",
     "volume-mic",
     "battery",
-    "clock",
 ]
 
 [widget.taskbar]
@@ -49,16 +51,30 @@ drawer = true
 [widget.keyboard_layout]
 show_glyph = false
 
-[widget.sysmon]
-glyph = "cpu"
+[widget."dotnetrob/cat:cat"]
+font_scale = 1.35
+show_cpu_percent = true
+cat_color_mode = "custom"
+cat_color = "#ffffff"
+
+[widget."dotnetrob/cat:cat".actions]
+left = "panel-toggle control-center system"
 
 [widget.volume.actions]
-
+scroll_up = "volume-up 1%"
+scroll_down = "volume-down 1%"
 
 [widget.volume-mic]
 type = "volume"
 device = "input"
 # hide_when_inactive = true
 
+[widget.volume-mic.actions]
+scroll_up = "volume-up 1%"
+scroll_down = "volume-down 1%"
+
 [widget.clock]
 format = "%H:%M:%S"
+
+[widget.clock.actions]
+right = "exec notion-calendar-electron"

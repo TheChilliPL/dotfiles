@@ -8,11 +8,24 @@ enable_sounds = true
 [brightness]
 enable_ddcutil = true
 
-[calendar]
-
 [location]
 address = "Pabianice"
 
 [notification]
 enable_daemon = true
 layer = "overlay"
+
+[wallpaper]
+enabled = false
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_toggle_1"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_toggle_2"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_toggle_3"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_panel"

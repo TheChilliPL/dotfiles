@@ -1,0 +1,16 @@
+[plugins]
+enabled = [
+    "frai3mega/battery-graph",
+    "dotnetrob/cat",
+    "pozzoo/hassio",
+    "andrewdems/printers",
+    "neuro/upbeat",
+]
+
+[plugin_settings."pozzoo/hassio"]
+entity_manager_open_near_click = true
+entity_manager_placement = "attached"
+ha_url = "https://home.thechilli.dev"
+shortcut_entity_1 = "light.lightbulb"
+shortcut_entity_2 = "light.desk_lamp"
+shortcut_entity_3 = "fan.bedroom_fan"
