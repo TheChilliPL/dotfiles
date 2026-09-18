@@ -1,0 +1,64 @@
+[bar]
+order = "main"
+
+[bar.default]
+position = "top"
+panel_overlap = 10
+radius = 10
+start = [
+    "taskbar",
+    "privacy",
+    "weather",
+]
+center = ["active_window"]
+end = [
+    "media",
+    "lock_keys",
+    "tray",
+    "keyboard_layout",
+    "network",
+    "bluetooth",
+    "sysmon",
+    "brightness",
+    "volume",
+    "volume-mic",
+    "battery",
+    "clock",
+]
+
+[widget.taskbar]
+icon_scale = 1.3
+group_by_workspace = true
+show_workspace_label = false
+hide_empty_workspaces = true
+workspace_group_capsule = false
+
+[widget.privacy]
+hide_inactive = true
+active_color = "error"
+
+[widget.active_window.actions]
+left = "panel-toggle control-center"
+
+[widget.media]
+title_scroll = "always"
+
+[widget.tray]
+drawer = true
+
+[widget.keyboard_layout]
+show_glyph = false
+
+[widget.sysmon]
+glyph = "cpu"
+
+[widget.volume.actions]
+
+
+[widget.volume-mic]
+type = "volume"
+device = "input"
+# hide_when_inactive = true
+
+[widget.clock]
+format = "%H:%M:%S"

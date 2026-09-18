@@ -1,0 +1,18 @@
+[shell.keyboard_layout.custom_labels]
+"English (US)" = "🏳️‍⚧️"
+
+[audio]
+enable_overdrive = true
+enable_sounds = true
+
+[brightness]
+enable_ddcutil = true
+
+[calendar]
+
+[location]
+address = "Pabianice"
+
+[notification]
+enable_daemon = true
+layer = "overlay"
