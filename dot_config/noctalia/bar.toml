@@ -26,6 +26,7 @@ end = [
     "volume",
     "volume-mic",
     "battery",
+    "notifications",
 ]
 
 [widget.taskbar]
