@@ -92,10 +92,8 @@ overview {
     workspace-shadow { off; }
 }
 
-spawn-sh-at-startup "awww-daemon"
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "bitwarden-desktop"
-spawn-at-startup "fuzzel-polkit-agent"
 spawn-at-startup "fcitx5"
 spawn-at-startup "protonmail-bridge"
 spawn-at-startup "noctalia"
@@ -135,7 +133,7 @@ window-rule {
     open-floating true
     open-focused false
     default-floating-position x=32 y=16 relative-to="bottom-right"
-    
+
     baba-is-float true
 
     opacity 0.5
@@ -257,7 +255,7 @@ window-rule {
 
 	open-focused false
 	open-floating true
-	
+
 	border { off; }
 	shadow { on; }
 }
@@ -288,7 +286,7 @@ window-rule {
 }
 
 layer-rule {
-    match namespace="^awww-daemon$"
+    match namespace="^noctalia-wallpaper$"
     place-within-backdrop true
 }
 

@@ -1,3 +1,8 @@
+[shell]
+polkit_agent = false
+password_style = "random"
+screen_time_enabled = true
+
 [shell.keyboard_layout.custom_labels]
 "English (US)" = "🏳️‍⚧️"
 
@@ -16,7 +21,11 @@ enable_daemon = true
 layer = "overlay"
 
 [wallpaper]
-enabled = false
+enabled = true
+fill_mode = "crop"
+transition = ["fade"]
+transition_on_startup = true
+directory = "/home/chilli/Pictures/Wallpapers"
 
 [[control_center.shortcuts]]
 type = "pozzoo/hassio:ha_toggle_1"
@@ -29,3 +38,49 @@ type = "pozzoo/hassio:ha_toggle_3"
 
 [[control_center.shortcuts]]
 type = "pozzoo/hassio:ha_panel"
+
+[shell.session]
+grid = true
+grid_columns = 3
+
+[[shell.session.actions]]
+action = "lock"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "l"
+variant = "secondary"
+
+[[shell.session.actions]]
+action = "logout"
+countdown_seconds = 5.0
+enabled = true
+shortcut = "o"
+variant = "default"
+
+[[shell.session.actions]]
+action = "suspend"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "s"
+variant = "default"
+
+[[shell.session.actions]]
+action = "lock_and_suspend"
+countdown_seconds = 0.0
+enabled = true
+shortcut = "Shift+l"
+variant = "default"
+
+[[shell.session.actions]]
+action = "reboot"
+countdown_seconds = 10.0
+enabled = true
+shortcut = "r"
+variant = "primary"
+
+[[shell.session.actions]]
+action = "shutdown"
+countdown_seconds = 10.0
+enabled = true
+shortcut = "h"
+variant = "destructive"

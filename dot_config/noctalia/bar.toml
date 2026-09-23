@@ -40,6 +40,10 @@ workspace_group_capsule = false
 hide_inactive = true
 active_color = "error"
 
+[widget.active_window]
+show_empty_label = true
+title_scroll = "on_hover"
+
 [widget.active_window.actions]
 left = "panel-toggle control-center"
 
