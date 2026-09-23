@@ -1,43 +1,11 @@
 [shell]
 polkit_agent = false
 password_style = "random"
+external_ip_enabled = true
 screen_time_enabled = true
 
 [shell.keyboard_layout.custom_labels]
 "English (US)" = "🏳️‍⚧️"
-
-[audio]
-enable_overdrive = true
-enable_sounds = true
-
-[brightness]
-enable_ddcutil = true
-
-[location]
-address = "Pabianice"
-
-[notification]
-enable_daemon = true
-layer = "overlay"
-
-[wallpaper]
-enabled = true
-fill_mode = "crop"
-transition = ["fade"]
-transition_on_startup = true
-directory = "/home/chilli/Pictures/Wallpapers"
-
-[[control_center.shortcuts]]
-type = "pozzoo/hassio:ha_toggle_1"
-
-[[control_center.shortcuts]]
-type = "pozzoo/hassio:ha_toggle_2"
-
-[[control_center.shortcuts]]
-type = "pozzoo/hassio:ha_toggle_3"
-
-[[control_center.shortcuts]]
-type = "pozzoo/hassio:ha_panel"
 
 [shell.session]
 grid = true
@@ -84,3 +52,36 @@ countdown_seconds = 10.0
 enabled = true
 shortcut = "h"
 variant = "destructive"
+
+[audio]
+enable_overdrive = true
+enable_sounds = true
+
+[brightness]
+enable_ddcutil = true
+
+[location]
+address = "Pabianice"
+
+[notification]
+enable_daemon = true
+layer = "overlay"
+
+[wallpaper]
+enabled = true
+fill_mode = "crop"
+transition = ["fade"]
+transition_on_startup = true
+directory = "/home/chilli/Pictures/Wallpapers"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_toggle_1"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_toggle_2"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_toggle_3"
+
+[[control_center.shortcuts]]
+type = "pozzoo/hassio:ha_panel"

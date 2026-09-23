@@ -1,0 +1,63 @@
+[lockscreen]
+blurred_desktop = true
+monitors = ["HDMI-A-1"]
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+
+[lockscreen_widgets.widget.lockscreen_login_box]
+box_height = 70.0
+box_width = 400.0
+cx = 960.0
+cy = 831.0
+output = "HDMI-A-1"
+placement_height = 1080
+placement_width = 1920
+type = "login_box"
+
+[lockscreen_widgets.widget.lockscreen_login_box.settings]
+layout = "regular"
+
+[lockscreen_widgets.widget.lockscreen-clock]
+box_height = 0.0
+box_width = 0.0
+cx = 960.0
+cy = 144.5
+output = "HDMI-A-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "clock"
+
+[lockscreen_widgets.widget.lockscreen-clock.settings]
+background = true
+background_opacity = 0.5
+clock_style = "digital"
+format = "{:%H:%M:%S}"
+
+[lockscreen_widgets.widget.lockscreen-sysmon]
+box_height = 0.0
+box_width = 0.0
+cx = 128.0
+cy = 988.0
+output = "HDMI-A-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "sysmon"
+
+[lockscreen_widgets.widget.lockscreen-sysmon.settings]
+stat = "cpu_usage"
+stat2 = "cpu_temp"
+
+[lockscreen_widgets.widget.lockscreen-weather]
+box_height = 0.0
+box_width = 0.0
+cx = 128.0
+cy = 862.0
+output = "HDMI-A-1"
+placement_height = 1080.0
+placement_width = 1920.0
+rotation = 0.0
+type = "weather"
