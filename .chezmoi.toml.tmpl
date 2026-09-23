@@ -1,0 +1,18 @@
+[data]
+{{- $hosttype := promptChoiceOnce . "hosttype" "What type of host are you on" (list "desktop" "laptop" "server" ) }}
+hosttype = {{ $hosttype | quote }}
+{{- if ne $hosttype "server" }}
+{{- $monitors := output "niri" "msg" "-j" "outputs" | fromJson }}
+{{- writeToStdout "Detected monitors:\n" }}
+{{- range $monitor := $monitors }}
+{{- writeToStdout "- " $monitor.name " ["
+    ($monitor.physical_size | join "×") "mm, "
+    ($monitor.logical.width | toString) "×" ($monitor.logical.height | toString) "px]\n"
+}}
+{{- end }}
+{{- $monitorNames := jq ".[] | .name" $monitors }}
+{{- $mainMonitor := promptChoiceOnce . "mainMonitor" "Main monitor" $monitorNames }}
+mainMonitor = {{ $mainMonitor | quote }}
+otherMonitors = {{ without $monitorNames $mainMonitor | toToml }}
+monitorsJson = {{ $monitors | toJson | quote }}
+{{- end }}

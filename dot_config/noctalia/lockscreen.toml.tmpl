@@ -1,30 +1,49 @@
 [lockscreen]
 blurred_desktop = true
-monitors = ["HDMI-A-1"]
+monitors = ["{{ .mainMonitor }}"]
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
 
-[lockscreen_widgets.widget.lockscreen_login_box]
+[desktop_widgets.grid]
+visible               = true
+cell_size             = 16
+major_interval        = 4
+
+[lockscreen_widgets.widget.lockscreen-login-box]
 box_height = 70.0
 box_width = 400.0
 cx = 960.0
 cy = 831.0
-output = "HDMI-A-1"
+output = "{{ .mainMonitor }}"
 placement_height = 1080
 placement_width = 1920
 type = "login_box"
 
-[lockscreen_widgets.widget.lockscreen_login_box.settings]
-layout = "regular"
+[lockscreen_widgets.widget.lockscreen-login-box.settings]
+layout = "compact"
+
+{{- range (.monitorsJson | fromJson) }}
+{{- if has .name $.otherMonitors }}
+[lockscreen_widgets.widget."lockscreen-login-box@{{.name}}"]
+box_height = 0
+box_width = 0
+cx = 0
+cy = 0
+output = "{{.name}}"
+placement_height = {{.logical.height}}
+placement_width = {{.logical.width}}
+type = "login_box"
+{{- end}}
+{{- end}}
 
 [lockscreen_widgets.widget.lockscreen-clock]
 box_height = 0.0
 box_width = 0.0
 cx = 960.0
 cy = 144.5
-output = "HDMI-A-1"
+output = "{{ .mainMonitor }}"
 placement_height = 1080.0
 placement_width = 1920.0
 rotation = 0.0
@@ -41,7 +60,7 @@ box_height = 0.0
 box_width = 0.0
 cx = 128.0
 cy = 988.0
-output = "HDMI-A-1"
+output = "{{ .mainMonitor }}"
 placement_height = 1080.0
 placement_width = 1920.0
 rotation = 0.0
@@ -56,7 +75,7 @@ box_height = 0.0
 box_width = 0.0
 cx = 128.0
 cy = 862.0
-output = "HDMI-A-1"
+output = "{{ .mainMonitor }}"
 placement_height = 1080.0
 placement_width = 1920.0
 rotation = 0.0

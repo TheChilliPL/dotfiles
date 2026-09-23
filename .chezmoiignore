@@ -1,1 +1,10 @@
 README.md
+{{ if eq .hosttype "server" -}}
+.config/autostart
+.config/foot
+.config/fsel
+.config/ghostty
+.config/niri
+.config/noctalia
+.local
+{{ end -}}
