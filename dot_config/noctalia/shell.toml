@@ -53,6 +53,9 @@ enabled = true
 shortcut = "h"
 variant = "destructive"
 
+[shell.greeter_sync]
+auto_sync = true
+
 [audio]
 enable_overdrive = true
 enable_sounds = true
