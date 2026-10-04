@@ -1,0 +1,5 @@
+paths = [
+    "~/Projects/*",
+    "~/.local/share/chezmoi",
+    "~/.local/share/chezsys",
+]
