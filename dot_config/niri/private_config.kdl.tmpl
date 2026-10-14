@@ -270,6 +270,19 @@ window-rule {
 	default-window-height { fixed 500; }
 }
 
+window-rule {
+    match app-id="^affinity.exe$" title="^Sub$"
+
+    open-floating true
+    open-focused false
+
+    default-floating-position x=50 y=0 relative-to="left"
+
+    border {
+        off
+    }
+}
+
 // Show currently screencasted window with red border
 window-rule {
 	match is-window-cast-target=true
