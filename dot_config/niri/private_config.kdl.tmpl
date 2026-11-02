@@ -15,7 +15,6 @@ input {
         drag true
         drag-lock
         natural-scroll
-        disabled-on-external-mouse
     }
     {{- else -}}
     touchpad {
@@ -307,6 +306,10 @@ binds {
 
     Mod+N hotkey-overlay-title="Notification center" { spawn "swaync-client" "-t"; }
 
+    {{ if eq .hosttype "laptop" -}}
+    Mod+F9 { spawn-sh "niri msg action toggle-touchpad && notify-send 'Touchpad toggled' -e -t 1000 -u LOW"; }
+    {{- end }}
+
     XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.005-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
@@ -324,7 +327,7 @@ binds {
     Mod+O repeat=false { toggle-overview; }
 
     Mod+Q { close-window; }
-    Mod+Shift+Q { spawn "sh" "-c" "niri msg --json focused-window | jq -r '.pid' | xargs -I {} kill -9 {}"; }
+    Mod+Shift+Q { spawn-sh "niri msg --json focused-window | jq -r '.pid' | xargs -I {} kill -9 {}"; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
