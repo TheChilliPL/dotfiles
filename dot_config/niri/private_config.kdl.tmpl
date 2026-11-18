@@ -98,6 +98,8 @@ environment {
     // Consistent XDG file picker
     GTK_USE_PORTAL "1"
     GDK_DEBUG "portals"
+    // Force GTK to use simple IM module for input, so that XCompose works properly
+    GTK_IM_MODULE "simple"
     // Chezetc config
     ETC_DST "/"
     FORCE_HYPERLINK "1"

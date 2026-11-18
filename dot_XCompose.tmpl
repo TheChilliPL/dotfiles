@@ -6,5 +6,7 @@ include "%L"
 # {{ $dir }}
 {{ $files := (output "ls" $dir | trim) -}}
 {{ range $file := splitList "\n" $files -}}
-include "{{ joinPath $home ".XCompose.d" $file }}"
+# File: {{ $file }}
+{{ include (joinPath $dir $file) -}}
+{{/*include "{{ joinPath $home ".XCompose.d" $file }}" */}}
 {{ end -}}
